@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "area-data": "^5.0.6",
+    "async-validator": "^3.5.2",
     "axios": "^0.21.1",
     "cropperjs": "^1.5.11",
     "element-plus": "1.0.2-beta.35",
@@ -26,6 +27,7 @@
     "xss": "^1.0.8"
   },
   "devDependencies": {
+    "@types/node": "^15.0.1",
     "@babel/preset-env": "^7.14.1",
     "@typescript-eslint/eslint-plugin": "^4.19.0",
     "@typescript-eslint/parser": "^4.19.0",

@@ -33,7 +33,8 @@
     
     // 要包含的类型声明文件名列表
     "types": [
-
+      "vite/client",
+      "node"
     ],
 
     "isolatedModules": true,
