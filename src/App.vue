@@ -6,7 +6,10 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'App'
+  name: 'App',
+  setup() {
+    console.log(import.meta.env)
+  }
 })
 </script>
 

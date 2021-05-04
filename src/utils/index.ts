@@ -67,7 +67,8 @@ function isType(type: string) {
 }
 
 export function isProduction() {
-  return process.env.NODE_ENV === 'production'
+  
+  return import.meta.env.NODE_ENV === 'production'
 }
 
 // 登录注册时的验证
