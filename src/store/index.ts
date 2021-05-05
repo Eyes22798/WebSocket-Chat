@@ -1,5 +1,6 @@
 import { createStore, createLogger } from 'vuex'
 import { store as user, UserStore } from '@/store/modules/user/index'
+import device from '@/store/modules/device/index'
 import { RootState } from './type'
 
 export interface State {
@@ -18,6 +19,7 @@ export const store = createStore({
   plugins,
   modules: {
     user,
+    device,
   }
 })
 

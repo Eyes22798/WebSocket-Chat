@@ -16,12 +16,49 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
+import {
+  defineComponent,
+  computed,
+  ref,
+  onMounted,
+  getCurrentInstance,
+} from 'vue'
+
+import { useStore } from 'vuex'
 
 export default defineComponent({
   name: 'AvatarChoose',
-  setup() {
-    return {}
+  setup(props, context) {
+    const axios = getCurrentInstance()?.appContext.config.globalProperties.$http
+    let avatarList = ref<Array<string>>([])
+    const store = useStore()
+    const device = computed(() => store.state.device.deviceType)
+    const IMG_URL = import.meta.env.VITE_IMG_URL
+
+    const close = () => {
+      context.emit('close')
+    }
+
+    const choose = (item: string) => {
+      console.log('ok')
+      context.emit('choose', item)
+      context.emit('close')
+    }
+
+    onMounted(() => {
+      axios.getFaceImgs().then((res: any) => {
+        console.log(res)
+        avatarList = res.data.data
+      })
+    })
+
+    return {
+      avatarList,
+      device,
+      IMG_URL,
+      close,
+      choose,
+    }
   }
 })
 </script>

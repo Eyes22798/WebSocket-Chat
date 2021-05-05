@@ -59,7 +59,6 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   /**tips:需要在钩子函数内读取登录状态 */
-  console.log(store.state.user)
   const userIsLogin = store.state.user.isLogin
   if(to.meta.requiresAuth){
     if(userIsLogin){
