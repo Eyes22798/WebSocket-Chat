@@ -50,16 +50,39 @@ export interface UserInfo {
   onlineTime: number;
 }
 
+export interface UserLoginInfo {
+  account: string;
+  password: string;
+  cvCode: string;
+  cvCodeTimestamp: string;
+  setting: Setting;
+}
+
+interface Setting {
+  os?: string | null;
+  browser?: string | null;
+  ip?: string | null;
+  country?: string | null;
+}
+
+interface RegisterInfo {
+  account: string;
+  password: string;
+  rePassword: string;
+  cvCode: string;
+  avatar: string;
+}
+
 export default {
-  // login(data) {
-  //   return request.post(`${API}/user/login`, data)
-  // },
+  login(data: UserLoginInfo) {
+    return request.post(`${API}/user/login`, data)
+  },
   getCVCode() { // 获取验证码
     return request.get(`${API}/user/getcode`)
   },
-  // register(data) { // 注册
-  //   return request.post(`${API}/user/register`, data)
-  // },
+  register(data: RegisterInfo) { // 注册
+    return request.post(`${API}/user/register`, data)
+  },
   // getUserInfo(id) {
   //   return request.get(`${API}/user/userinfo?id=${id}`)
   // },

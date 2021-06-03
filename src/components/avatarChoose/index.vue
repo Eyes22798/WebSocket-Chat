@@ -26,6 +26,8 @@ import {
 
 import { useStore } from 'vuex'
 
+import { Response } from '@/api/index'
+
 export default defineComponent({
   name: 'AvatarChoose',
   setup(props, context) {
@@ -46,8 +48,7 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      axios.getFaceImgs().then((res: any) => {
-        console.log(res)
+      axios.getFaceImgs().then((res: Response) => {
         avatarList = res.data.data
       })
     })

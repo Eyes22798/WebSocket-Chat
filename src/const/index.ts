@@ -5,7 +5,7 @@ export const enum ConversationTypes {
 
 export const APP_VERSION = '1.0.0'
 
-export const VueAMapKey = '704b3b5e984fa3b6185c3f012da42547'
+export const VueAMapKey = '33afa3152ef771f392d42091406689cc'
 
 interface SearchObjectMap {
   id: number;
