@@ -1,7 +1,7 @@
 import user from './modules/user'
 import sys from './modules/sys'
 
-export const API = 'api/v1'
+export const API = '/sys/api/v1'
 
 
 interface Data {
