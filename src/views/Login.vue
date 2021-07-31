@@ -199,7 +199,7 @@ export default defineComponent({
           $message.success('登录成功！')
           store.dispatch('ACTION_LOGIN', data)
           const redirect = router.currentRoute.value.query.redirect
-          const next = redirect ? redirect : '/home'
+          const next = redirect ? redirect : '/chat/home'
           // bug-3 type any
           router.replace(next as any)
         } else {

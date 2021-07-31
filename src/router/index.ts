@@ -10,6 +10,17 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
+    path: "/login",
+    name: 'Login',
+    meta: {
+        title: '登录',
+        keepAlive: true,
+        deepth: 0.5
+    },
+    component: () => 
+      import(/* webpackChunkName: "Login" */ "@/views/Login.vue")
+  },
+  {
     path: '/chat',
     name: 'Layout',
     component: () =>
@@ -32,17 +43,6 @@ const routes: Array<RouteRecordRaw> = [
         },
       },
     ],
-  },
-  {
-    path: "/login",
-    name: 'Login',
-    meta: {
-        title: '登录',
-        keepAlive: true,
-        deepth: 0.5
-    },
-    component: () => 
-      import(/* webpackChunkName: "Login" */ "@/views/Login.vue")
   },
   {
     path: "/404",
