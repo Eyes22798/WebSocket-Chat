@@ -120,7 +120,6 @@ export default defineComponent({
     const router = useRouter()
     const { $message, $confirm, $alert, $http, $socket }: any = getCurrentInstance()?.appContext.config.globalProperties
 
-
     const IMG_URL = import.meta.env.VITE_IMG_URL
     const bgUrl = ocean1
 
@@ -198,15 +197,15 @@ export default defineComponent({
 
         if (res.status === 200 && status === 1000) {
           $message.success('登录成功！')
-          store.dispatch('user/LOGIN', data)
+          store.dispatch('ACTION_LOGIN', data)
           const redirect = router.currentRoute.value.query.redirect
-          const next = redirect ? redirect : '/chat/home'
+          const next = redirect ? redirect : '/home'
           // bug-3 type any
           router.replace(next as any)
         } else {
           $message.error(msg)
           if (status === 1006 || status === 1007) {
-            $confirm(`你的${msg}，如需恢复请联系管理员：ccdebuging@gmail.com`, `通知：${msg}`, {
+            $confirm(`你的${msg}，如需恢复请联系管理员`, `通知：${msg}`, {
               // confirmButtonText: '确定',
               // cancelButtonText: '取消',
               type: 'error'
@@ -241,11 +240,11 @@ export default defineComponent({
     const getCVCode = () => { // 获取验证码
       cvCodeing.value = true
       $http.getCVCode().then((res: Response) => {
-        let { data, status, timestamp } = res.data
+        const { data, status, timestamp } = res.data
         cvCode.value = data
         loginInfo.cvCodeTimestamp = timestamp ?? ''
         nextTick(() => {
-          const currCanvas = (isLoginState.value ? loginCanvas : registerCanvas) as unknown as HTMLCanvasElement
+          const currCanvas = (isLoginState.value ? loginCanvas.value : registerCanvas.value) as unknown as HTMLCanvasElement
           createCanvas(cvCode.value, currCanvas, canvasImg, () => {
             cvCodeing.value = false
           })
@@ -275,26 +274,26 @@ export default defineComponent({
       avatar,
       device,
       cvCodeing,
-      Browser,
       loginCanvas,
       IMG_URL,
       bgUrl,
       showChooseAvatar,
       cvCode,
       isLoginState,
+      loginInfo,
       login,
       register,
       getCVCode,
       changeState,
       setShowChooseAvatar,
       chooseAvatar,
-      loginInfo,
+      Browser,
     }
   }
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .login-page {
   @import "./../../static/css/animation.scss";
   @import "./../../static/css/var.scss";
