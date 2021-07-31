@@ -281,6 +281,8 @@ export default defineComponent({
       cvCode,
       isLoginState,
       loginInfo,
+      registerInfo,
+      registerCanvas,
       login,
       register,
       getCVCode,

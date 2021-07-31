@@ -49,7 +49,7 @@ export default defineComponent({
 
     onMounted(() => {
       axios.getFaceImgs().then((res: Response) => {
-        avatarList = res.data.data
+        avatarList.value = res.data.data
       })
     })
 
