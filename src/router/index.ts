@@ -25,7 +25,7 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Layout',
     component: () =>
       import(/* webpackChunkName: "Layout" */ "@/layout/index.vue"),
-    redirect: '/chat/home',
+    redirect: '/chat',
     meta: {
       requiresAuth: true,
       keepAlive: true

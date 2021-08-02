@@ -1,23 +1,40 @@
 <template>
-  <div class="layout">
-    <div class="left">
-      menu
-    </div>
-    <div class="right">
-      <el-container>
-        <el-header>
-          nav
-        </el-header>
-        <el-main>
-          content
-        </el-main>
-      </el-container>
-    </div>
+  <div>
+    <myHeader />
+    <transition
+    name="fade-transform"
+    mode="out-in"
+  >
+    <keep-alive>
+      <router-view :key="key" />
+    </keep-alive>
+  </transition>
   </div>
 </template>
 
 <script lang="ts">
-export default {
-  
-}
+import { defineComponent } from 'vue'
+import { useRoute } from 'vue-router'
+import myHeader from './Header/index.vue'
+import myAside from './Aside/index.vue'
+
+export default defineComponent({
+  components: {
+    myHeader,
+    myAside,
+  },
+  setup() {
+    const route = useRoute()
+    const cachedViews = () => {
+      return ['Home']
+    }
+    const key = () => {
+      return route.path
+    }
+    return {
+      cachedViews,
+      key
+    }
+  }
+})
 </script>
