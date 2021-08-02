@@ -1,8 +1,6 @@
-# Vue 3 + Typescript + Vite
-
 ## 前言
 
-> 项目中所有逻辑功能都来自 https://github.com/CCZX/wechat
+> 项目中所有逻辑功能都来自 <https://github.com/CCZX/wechat>
 >
 > 有兴趣的欢迎star原项目，在这里再次感谢大佬的开源贡献☕！
 
