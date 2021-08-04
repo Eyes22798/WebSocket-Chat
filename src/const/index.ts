@@ -35,7 +35,7 @@ export const searchTypes: SearchTypes = {
   ]
 }
 
-export const enum ValidateNewsTips {
+export enum ValidateNewsTips {
   applyFriend = '请求添加你为好友',
   applyGroup = '请求加入群聊'
 }
@@ -43,7 +43,7 @@ export const enum ValidateNewsTips {
 export const qiniu_URL = 'http://blog.static.chenr.cn/'
 
 // 七牛云上传图片时的状态
-export const enum UploadImgStatusMap {
+export enum UploadImgStatusMap {
   error = 'error',
   next = 'next',
   complete = 'complete'
@@ -68,7 +68,7 @@ export const coArtBoardHandleOption: Array<CoArtBoardHandleOption> = [
   { name: "颜色", type: "color" }
 ]
 
-export const enum CoArtBoardReplyTypes {
+export enum CoArtBoardReplyTypes {
   agree = 'agree',
   disagree = 'disagree',
   busy = 'busy'
