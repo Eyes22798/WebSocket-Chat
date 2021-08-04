@@ -6,34 +6,36 @@
           <i class="oper-item el-icon-s-operation"></i>
         </el-badge>
       </span>
-      <el-dropdown-menu slot="dropdown">
-        <el-dropdown-item>
-          <router-link to="/chat/setting" class="aside-menu-link">
-            <el-button type="text">个人设置</el-button>
-          </router-link>
-        </el-dropdown-item>
-        <el-dropdown-item>
-          <el-badge
-            :value="validateUnReadCount"
-            :hidden="!validateUnReadCount"
-          >
-            <router-link to="/chat/system" class="aside-menu-link">
-              <el-button type="text">系统消息</el-button>
+      <template #dropdown>
+        <el-dropdown-menu>
+          <el-dropdown-item>
+            <router-link to="/chat/setting" class="aside-menu-link">
+              <el-button type="text">个人设置</el-button>
             </router-link>
-          </el-badge>
-        </el-dropdown-item>
-        <el-dropdown-item>
-          <!-- <el-button type="text" @click="setShowTheme(true)">主题设置</el-button> -->
-        </el-dropdown-item>
-        <el-dropdown-item>
-          <router-link to="/chat/setting" class="aside-menu-link">
-            <!-- <el-button type="text">反馈</el-button> -->
-          </router-link>
-        </el-dropdown-item>
-        <el-dropdown-item>
-          <el-button type="text" @click="logout">退出登录</el-button>
-        </el-dropdown-item>
-      </el-dropdown-menu>
+          </el-dropdown-item>
+          <el-dropdown-item>
+            <el-badge
+              :value="validateUnReadCount"
+              :hidden="!validateUnReadCount"
+            >
+              <router-link to="/chat/system" class="aside-menu-link">
+                <el-button type="text">系统消息</el-button>
+              </router-link>
+            </el-badge>
+          </el-dropdown-item>
+          <el-dropdown-item>
+            <!-- <el-button type="text" @click="setShowTheme(true)">主题设置</el-button> -->
+          </el-dropdown-item>
+          <el-dropdown-item>
+            <router-link to="/chat/setting" class="aside-menu-link">
+              <!-- <el-button type="text">反馈</el-button> -->
+            </router-link>
+          </el-dropdown-item>
+          <el-dropdown-item>
+            <el-button type="text" @click="logout">退出登录</el-button>
+          </el-dropdown-item>
+        </el-dropdown-menu>
+      </template>
     </el-dropdown>
   </div>
 </template>
