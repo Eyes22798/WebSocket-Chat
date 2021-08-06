@@ -104,8 +104,9 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent, getCurrentInstance } from 'vue'
+import { ref, defineComponent, getCurrentInstance, computed } from 'vue'
 import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
 import { CoArtBoardReplyTypes, WEB_RTC_MSG_TYPE } from '@/const'
 import { removeCookie } from '@/utils/token'
 
@@ -120,15 +121,35 @@ let timer: number
 export default defineComponent({
   setup() {
     const router = useRouter()
-    const { $socket }: any = getCurrentInstance()?.appContext.config.globalProperties
+    const store = useStore()
+    const { $alert, $socket }: any = getCurrentInstance()?.appContext.config.globalProperties
 
     const webRTCState = ref('apply') // 用于定义进入webRTC通信组件时的状态，如果时apply就发起请求，如果是reply就回复
     const IMG_URL = import.meta.env.VITE_IMG_URL
+
+    const userInfo = computed(() => store.state.user.userInfo)
+    const unreadNews = computed(() => store.state.news.unreadNews)
 
     const logout = () => {
       router.replace('/login')
       $socket.emit('leave')
       removeCookie()
+    }
+
+    const webRtcMsgWatch = (newVal: string) => {
+      if (newVal) {
+        timer = window.setTimeout(() => {
+          $alert('对方没有答应，请先等待一段时间再尝试', '提示', {
+            confirmButtonText: '确定',
+            type: 'warning',
+            callback: () => {
+              store.dispatch('app/SET_ISTOCOARTBOARD', false)
+              store.dispatch('app/SET_IS_AUDIOING', false)
+              store.dispatch('app/SET_IS_VIDEOING', false)             
+            }
+          })
+        }, 10000)
+      }
     }
 
   },
